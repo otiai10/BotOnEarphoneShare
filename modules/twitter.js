@@ -16,6 +16,19 @@ var oauth = new OAuth(
   conf.encryption
 );
 
+exports.getFavs = function(params, callback){
+  oauth.getProtectedResource(
+    conf.favorites_get_api + '/?screen_name=EarphoneShare',
+    'GET',
+    conf.access_token,
+    conf.access_token_secret,
+    function(err,data,hoge){
+      callback(err,JSON.parse(data),hoge);
+    }
+  );
+}
+
+
 // favる
 exports.fav = function(id, callback){
   // dataで渡すんじゃなくて、叩くurlで渡すのがいいみたい

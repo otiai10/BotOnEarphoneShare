@@ -2,6 +2,7 @@
  * index.js
 **/
 var proc_tryFav = require('../process/tryFav.js').tryFav;
+var proc_getFavs = require('../process/getFavs.js').getFavs;
 
 var FAV_FAILED    = 0;
 var FAV_SUCCEEDED = 1;
@@ -19,6 +20,20 @@ exports.fav = function(req,res){
     // main
     proc_tryFav(params, function(response){
         console.log("===== in route/index =====\n", response);
+        res.send(response);
+    });
+};
+
+exports.getFavs = function(req,res){
+    // allow cross domain
+    res.header('Access-Control-Allow-Origin', '*');
+    // make params
+    var params = {
+        page : 2,
+    };
+    // main
+    proc_getFavs(params, function(response){
+        console.log('response');
         res.send(response);
     });
 };

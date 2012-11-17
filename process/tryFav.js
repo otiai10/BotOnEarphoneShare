@@ -25,6 +25,7 @@ if(IS_DEBUG){ //-------------------------- DEBUG BLOCK
                 if(ret == FAV_RETWEETED){
                     callback({ state : FAV_RETWEETED }); // retweet成功
                 }else{
+                    callback({ state : FAV_MENTIONED }); // 一応フラグに使わせてもらう
 /******************** mention 処理は凍結します **********
                     // Retweetできなかった→mention処理
                     mention(params,function(ret){
