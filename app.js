@@ -20,8 +20,7 @@ app.configure('development', function(){
   app.use(express.errorHandler());
 });
 
-app.post('/fav',          routes.fav);
-app.post('/getFavs', routes.getFavs);
+app.post('/retweet', routes.retweet);
 
 http.createServer(app).listen(port, function(){
   console.log("Express server listening on port " + port);
